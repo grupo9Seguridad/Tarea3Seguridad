@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/Plantillas/newTemplate.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+
+                <br/>
+                <br/>
+                <br/>
+
+                <h:form>
+
+                    <p:messages id="mensaje" autoUpdate="true"/>
+                    <p:fieldset legend="Firma de archivos">
+                        <h:panelGrid id="pgEncriptar" columns="3">
+
+                            <p:outputLabel dir="RTL" for="txtRutaOrigen" value="Ruta de archivo origen"/>
+                            <p:inputText id="txtRutaOrigen" required="true" requiredMessage="Este dato es requerido" value="#{controlDeFirma.rutaArchivoFirmar}"/>
+                            <p:message for="txtRutaOrigen"/>
+                            
+                            <p:outputLabel dir="RTL" for="txtUsuario" value="Nombre de usuario"/>
+                            <p:inputText id="txtUsuario" required="true" requiredMessage="Este dato es requerido" value="#{controlDeFirma.nombreUsuario}"/>
+                            <p:message for="txtUsuario"/>
+                            
+                            <p:outputLabel dir="RTL" for="txtArchivoFirma" value="Archivo Firma"/>
+                            <p:inputText id="txtArchivoFirma" required="true" requiredMessage="Este dato es requerido" value="#{controlDeFirma.archivoFirma}"/>
+                            <p:message for="txtArchivoFirma"/>
+
+                        </h:panelGrid>         
+
+                        <br/>
+
+                        <p:commandButton id="btnFirmar" icon="ui-icon-key" value="Firmar"  actionListener="#{controlDeFirma.firmarArchivo()}"/>
+                        <p:message for="btnFirmar"/>
+                        
+                        <p:commandButton id="btnVerificar" icon="ui-icon-key" value="Verificar"  actionListener="#{controlDeFirma.verificarArchivo()}"/>
+                        <p:message for="btnVerificar"/>
+
+                        <br/>
+
+
+                    </p:fieldset>
+
+
+
+                </h:form>
+                <br/>
+                <br/>
+                <br/>
+
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
